@@ -8,8 +8,6 @@ import { usePathname } from "next/navigation"
 import Script from "next/script"
 import { useEffect } from "react"
 
-import { Footer } from "@/components/footer"
-import { Header } from "@/components/header"
 import { SmoothScroll } from "@/components/smooth-scroll"
 
 interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -27,12 +25,10 @@ export function Wrapper({ children, theme = "light", lenis = true, className, ..
 
   return (
     <>
-      <Header />
       <main className={cn(s.main, className)} {...props} style={{ zIndex: "var(--z-content)" }}>
         {children}
         <Script id="theme-script">{`document.documentElement.setAttribute('data-theme', '${theme}');`}</Script>
       </main>
-      <Footer />
       {lenis && <SmoothScroll root />}
     </>
   )
