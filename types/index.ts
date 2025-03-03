@@ -3,3 +3,11 @@ export interface Social {
   ui: string
   url: string
 }
+
+export enum SocialMedia {
+  tiktok = "tiktok",
+  facebook = "facebook",
+  instagram = "instagram",
+  x = "x",
+  youtube = "youtube",
+}
