@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: var(--black);
+  --foreground: var(--white);
+
+  --header-height: mobile-vw(64px);
+
+  --svh-calc: calc(var(--svh, 1vh) * 100);
+  --lvh-calc: calc(var(--lvh, 1vh) * 100);
+
+  @include-media ('tablet') {
+    --header-height: tablet-vw(84px);
+  }
+
+  @include-media ('desktop') {
+    --header-height: desktop-vw(84px);
+  }
+
+  --z-content: z-stack();
+  --z-book-button: z-stack();
+  --z-menu: z-stack();
+  --z-header: z-stack();
+  --z-header-content: z-stack();
+  --z-popup: z-stack();
+  --z-modal: z-stack();
+  --z-gsap-markers: z-stack();
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+/* Core styles that shouldn't be reset */
+body {
+  min-height: 100vh;
+  overscroll-behavior: none;
+  background-color: var(--theme-primary);
+  color: var(--theme-secondary);
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-alexandria), Arial, Helvetica, sans-serif;
+}
+
+*::selection {
+  background-color: var(--theme-secondary);
+  color: var(--theme-primary);
+}
+
+.gsap-marker-end,
+.gsap-marker-start,
+.gsap-marker-scroller-end,
+.gsap-marker-scroller-start {
+  z-index: z-index("gsap-markers") !important;
+}
+
+.inherit-dims {
+  height: inherit;
+  width: inherit;
+}
+
+.add-header-height {
+  margin-top: var(--header-height);
+}
+
+.blur-bg {
+  background: hsla(0, 0%, 15%, 0.8);
+  backdrop-filter: blur(16px);
+  mask-image: hsla(0, 0%, 15%, 0.8);
+}
+
+.blur-bg-bricky-brick {
+  background: hsla(10, 66%, 43%, 0.8);
+  backdrop-filter: blur(16px);
+  mask-image: hsla(10, 66%, 43%, 0.8);
+}
+
+.blur-bg-white {
+  background: hsla(0, 0%, 98%, 0.1);
+  backdrop-filter: blur(16px);
+  mask-image: hsla(0, 0%, 98%, 0.1);
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

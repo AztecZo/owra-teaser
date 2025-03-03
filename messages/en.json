@@ -1,0 +1,12 @@
+{
+    "metadata": {
+        "default": {
+            "title": "Owra",
+            "description": "description"
+        }
+    },
+    "localeSwitcher": {
+        "label": "en",
+        "locale": "{locale, select, en}"
+    }
+}
