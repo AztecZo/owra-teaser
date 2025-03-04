@@ -139,8 +139,7 @@ const config: Config = {
         ...colors,
       },
       fontFamily: {
-        halenoir: "var(--font-halenoir)",
-        "lexend-giga": "var(--font-lexend-giga)",
+        asap: "var(--font-asap)",
       },
       borderRadius: {
         lg: "var(--radius)",

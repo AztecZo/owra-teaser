@@ -2,29 +2,20 @@
 const colors = {
   black: "#000000",
   white: "#ffffff",
-  "bricky-brick": "#b73d25",
-  "namara-grey": "#7b7b7b",
-  "moon-veil": "#8B9BB1",
-  "bengala-red": "#932d19",
-  grenadier: "#c24e37",
-  tabasco: "#A02912",
+  "cedar-wood-finish": "#701500",
+  "algerian-colar": "#FF5B4A",
 }
 
 const themes = {
   light: {
     primary: colors.white,
     secondary: colors.black,
-    contrast: colors["bricky-brick"],
+    contrast: colors["algerian-colar"],
   },
   dark: {
     primary: colors.black,
     secondary: colors.white,
-    contrast: colors["bricky-brick"],
-  },
-  "bricky-brick": {
-    primary: colors["bricky-brick"],
-    secondary: colors.black,
-    contrast: colors.white,
+    contrast: colors["algerian-colar"],
   },
 }
 

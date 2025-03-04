@@ -5,55 +5,15 @@ import { StyleVariables } from "@/lib/style-variables"
 import { colors, themes } from "@/styles/config.mjs"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations } from "next-intl/server"
-import localFont from "next/font/local"
+import { Asap } from "next/font/google"
 
 import { GSAP } from "@/components/gsap"
 import { RealViewport } from "@/components/real-viewport"
 
-const halenoir = localFont({
-  src: [
-    {
-      path: "./fonts/Halenoir/Halenoir-Bold.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Halenoir/Halenoir-Medium.woff",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Halenoir/Halenoir-Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Halenoir/Halenoir-Light.woff",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Halenoir/Halenoir-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Halenoir/Halenoir-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Halenoir/Halenoir-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Halenoir/Halenoir-Light.woff2",
-      weight: "300",
-      style: "normal",
-    },
-  ],
-  variable: "--font-halenoir",
+const asap = Asap({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-asap",
 })
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
@@ -89,11 +49,10 @@ export default async function LocaleLayout({
       <head>
         <StyleVariables colors={colors} themes={themes} />
       </head>
-      <body className={`${halenoir.variable} antialiased`}>
+      <body className={`${asap.variable} antialiased`}>
         <RealViewport />
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         <GSAP scrollTrigger={true} />
-        {/* <SmoothScroll root={true} /> */}
       </body>
     </html>
   )
