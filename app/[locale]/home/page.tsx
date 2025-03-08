@@ -22,8 +22,10 @@ export function Home() {
   const [position, setPosition] = useState<"left" | "right" | "center">("center")
 
   useLayoutEffect(() => {
-    setPosition("left")
-  }, [isMobile])
+    if (isMobile) {
+      setPosition("left")
+    }
+  }, [])
 
   useEffect(() => {
     if (isMobile) {
@@ -47,7 +49,7 @@ export function Home() {
 
   return (
     <div
-      className="relative w-screen h-screen flex flex-col items-stretch font-asap bg-toasted-marshmallow-fluff overflow-hidden"
+      className="relative w-screen h-[var(--svh-calc)] flex flex-col items-stretch font-asap bg-toasted-marshmallow-fluff overflow-hidden"
       ref={ref}
     >
       <div className="h-16 flex items-center justify-center py-4 border-b border-glazed-sugar">
