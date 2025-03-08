@@ -1,3 +1,58 @@
+.munch-owra-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+
+  .items {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .munch-owra {
+      height: desktop-vw(360px);
+      width: desktop-vw(200px);
+
+      .transform-container {
+        transition: transform 700ms ease;
+        transform: translateX(desktop-vw(100px));
+
+        &.right {
+          transform: translateX(desktop-vw(-100px));
+        }
+      }
+
+      &.munch-owra-1 {
+        transition: transform 700ms ease;
+        transform: translateY(desktop-vw(360px)) translateX(desktop-vw(0px));
+        z-index: 10;
+      }
+
+      &.munch-owra-2 {
+        transition: transform 700ms ease;
+        transform: translateY(desktop-vw(190px)) translateX(desktop-vw(0px));
+        z-index: 5;
+      }
+
+      &.munch-owra-3 {
+        transition: transform 700ms ease;
+        transform: translateY(desktop-vw(190px)) translateX(desktop-vw(0px));
+        z-index: 5;
+      }
+
+      &.munch-owra-4 {
+        transition: transform 700ms ease;
+        transform: translateY(desktop-vw(190px)) translateX(desktop-vw(0px));
+        z-index: 5;
+      }
+    }
+  }
+}
+
 .chill-owra-container {
   position: absolute;
   right: 0;
@@ -37,6 +92,62 @@
         transform: translateY(desktop-vw(190px)) translateX(desktop-vw(90px));
         z-index: 5;
       }
+    }
+  }
+}
+
+.munch-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+
+  .munch {
+    position: absolute;
+
+    height: desktop-vw(100px);
+    width: desktop-vw(100px);
+
+    &.m-1 {
+      top: desktop-vw(-100px);
+      right: desktop-vw(-100px);
+
+      height: desktop-vw(210px);
+      width: desktop-vw(210px);
+    }
+
+    &.m-2 {
+      top: desktop-vw(100px);
+      right: desktop-vw(50px);
+
+      height: desktop-vw(160px);
+      width: desktop-vw(160px);
+    }
+
+    &.m-3 {
+      top: desktop-vw(200px);
+      right: desktop-vw(200px);
+
+      height: desktop-vw(120px);
+      width: desktop-vw(120px);
+    }
+
+    &.m-4 {
+      top: desktop-vw(500px);
+      left: desktop-vw(500px);
+    }
+
+    &.m-5 {
+      top: desktop-vw(600px);
+      left: desktop-vw(600px);
+
+      transform: translate(-50%, -50%);
+    }
+
+    &.m-6 {
+      top: desktop-vw(700px);
+      left: desktop-vw(700px);
     }
   }
 }
@@ -98,15 +209,24 @@
 }
 
 .text-container {
-  position: absolute;
-  top: desktop-vw(100px);
   left: 50%;
+  position: absolute;
+  top: mobile-vw(120px);
   transform: translateX(-50%);
 
+  @include-media ("desktop") {
+    top: desktop-vw(100px);
+  }
+
   .logo-container {
-    position: relative;
-    width: desktop-vw(170px);
-    height: desktop-vw(100px);
+    height: mobile-vw(70px);
+    width: mobile-vw(113px);
+
+    @include-media ("desktop") {
+      height: desktop-vw(100px);
+      position: relative;
+      width: desktop-vw(170px);
+    }
   }
 }
 
@@ -116,4 +236,72 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.mobile-switch {
+  --height: mobile-vw(32px);
+  --width: mobile-vw(260px);
+
+  box-shadow: 1px 2px 5.4px 0px rgba(0, 0, 0, 0.25) inset;
+  border-radius: mobile-vw(32px);
+  height: var(--height);
+  left: 50%;
+  position: absolute;
+  top: mobile-vw(50px);
+  transform: translate(-50%, -50%);
+  width: var(--width);
+
+  @include-media ("desktop") {
+    display: none;
+  }
+
+  &.left {
+    .mobile-switch-item-left {
+      color: var(--toasted-marshmallow-fluff);
+    }
+
+    .mobile-switch-item-right {
+      color: var(--cedar-wood-finish);
+    }
+
+    .mobile-switch-bg {
+      background: var(--cedar-wood-finish);
+      left: 0;
+    }
+  }
+
+  &.right {
+    .mobile-switch-item-left {
+      color: var(--blue-ruin);
+    }
+
+    .mobile-switch-item-right {
+      color: var(--toasted-marshmallow-fluff);
+    }
+
+    .mobile-switch-bg {
+      background: var(--blue-ruin);
+      left: calc(var(--width) / 2);
+    }
+  }
+
+  .mobile-switch-item {
+    color: var(--cedar-wood-finish);
+    transition: 400ms all ease;
+    width: calc(var(--width) / 2);
+
+    @include-media ("desktop") {
+      display: none;
+    }
+  }
+
+  .mobile-switch-bg {
+    border-radius: mobile-vw(32px);
+    height: calc(var(--height) * 0.9);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 900ms all ease;
+    width: calc((var(--width) / 2 - 2px));
+  }
 }

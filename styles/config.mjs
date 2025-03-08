@@ -4,6 +4,9 @@ const colors = {
   white: "#ffffff",
   "cedar-wood-finish": "#701500",
   "algerian-colar": "#FF5B4A",
+  "blue-ruin": "#0075CE",
+  "glazed-sugar": "#FFDACA",
+  "toasted-marshmallow-fluff": "#FFFAEA",
 }
 
 const themes = {
