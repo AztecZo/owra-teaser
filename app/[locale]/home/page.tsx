@@ -19,20 +19,19 @@ export function Home() {
   const { width: windowWidth } = useWindowSize()
   const isMobile = windowWidth < breakpoints.breakpointTablet
   const [mobileSet, setMobileSet] = useState(false)
+  const [hasMouseEntered, setHasMouseEntered] = useState(false)
 
   const [position, setPosition] = useState<"left" | "right" | "center">("center")
 
   useLayoutEffect(() => {
     if (isMobile && !mobileSet) {
-      console.log("isMobile", isMobile)
-
       setPosition("left")
       setMobileSet(true)
     }
   }, [isMobile, mobileSet])
 
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile || !hasMouseEntered) {
       return
     }
 
@@ -48,12 +47,17 @@ export function Home() {
     } else if (center) {
       if (position !== "center") setPosition("center")
     }
-  }, [docX, position, windowWidth, isMobile])
+  }, [docX, position, windowWidth, isMobile, hasMouseEntered])
+
+  const handleMouseEnter = () => {
+    setHasMouseEntered(true)
+  }
 
   return (
     <div
       className="relative w-screen h-[var(--svh-calc)] flex flex-col items-stretch font-asap bg-toasted-marshmallow-fluff overflow-hidden"
       ref={ref}
+      onMouseEnter={handleMouseEnter}
     >
       <header className="h-16 flex items-center justify-center py-4 border-b border-glazed-sugar">
         <IconOwraLogo fill={colors["algerian-colar"]} />
