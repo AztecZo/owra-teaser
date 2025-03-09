@@ -54,10 +54,10 @@ export function Home() {
       className="relative w-screen h-[var(--svh-calc)] flex flex-col items-stretch font-asap bg-toasted-marshmallow-fluff overflow-hidden"
       ref={ref}
     >
-      <div className="h-16 flex items-center justify-center py-4 border-b border-glazed-sugar">
+      <header className="h-16 flex items-center justify-center py-4 border-b border-glazed-sugar">
         <IconOwraLogo fill={colors["algerian-colar"]} />
-      </div>
-      <div className="relative flex flex-1">
+      </header>
+      <main className="relative flex flex-1">
         <div
           className={cn(s["mobile-switch"], "relative flex font-asap text-sm bt:text-lg bd:hidden z-50", {
             [s.left]: position === "left",
@@ -365,7 +365,7 @@ export function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

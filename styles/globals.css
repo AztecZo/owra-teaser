@@ -36,7 +36,7 @@
 
 /* Core styles that shouldn't be reset */
 body {
-  min-height: 100vh;
+  min-height: var(--svh-calc);
   overscroll-behavior: none;
   background-color: var(--theme-primary);
   color: var(--theme-secondary);
