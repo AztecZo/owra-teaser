@@ -17,9 +17,9 @@ export function Home() {
   const ref = useRef<HTMLDivElement>(null)
   const { docX } = useMouse(ref)
   const { width: windowWidth } = useWindowSize()
-  const isMobile = windowWidth < breakpoints.breakpointMobile
+  const isMobile = windowWidth < breakpoints.breakpointTablet
 
-  const [position, setPosition] = useState<"left" | "right" | "center">("center")
+  const [position, setPosition] = useState<"left" | "right" | "center">("left")
 
   useLayoutEffect(() => {
     if (isMobile) {
@@ -53,13 +53,11 @@ export function Home() {
       ref={ref}
     >
       <div className="h-16 flex items-center justify-center py-4 border-b border-glazed-sugar">
-        <div className="h-full">
-          <IconOwraLogo fill={colors["algerian-colar"]} />
-        </div>
+        <IconOwraLogo fill={colors["algerian-colar"]} />
       </div>
       <div className="relative flex flex-1">
         <div
-          className={cn(s["mobile-switch"], "relative flex font-asap text-sm z-50", {
+          className={cn(s["mobile-switch"], "relative flex font-asap text-sm bt:text-lg bd:hidden z-50", {
             [s.left]: position === "left",
             [s.right]: position === "right",
           })}
@@ -88,7 +86,7 @@ export function Home() {
         </div>
         <div
           className={cn(
-            "relative flex items-center justify-center transition-all duration-1000 border-r border-glazed-sugar",
+            "relative flex items-center justify-center transition-all duration-500",
             position === "center" && "w-1/2",
             position === "left" && "w-full bd:w-8/12",
             position === "right" && "w-0 bd:w-4/12"
@@ -97,14 +95,25 @@ export function Home() {
           <div className={s.wrapper}>
             <div
               className={cn(s["munch-owra-container"], "transition-opacity duration-500", {
-                "opacity-0": position === "right",
+                "opacity-0": position === "right" || position === "center",
               })}
             >
               <div className={cn(s["items"])}>
-                <div className={cn(s["munch-owra"], s["munch-owra-1"])}>
-                  <div className={cn(s["transform-container"], { [s.right]: position === "right" })}>
+                <div className={cn(s["munch-owra"], s["munch-owra-1"], "z-10")}>
+                  <div className={cn(s["transform-container"], { [s.active]: position === "left" })}>
                     <Img
                       src="/img/freshburst.png"
+                      alt="Munch Owra"
+                      className="w-full h-full object-contain -rotate-12"
+                      height={1000}
+                      width={1000}
+                    />
+                  </div>
+                </div>
+                <div className={cn(s["munch-owra"], s["munch-owra-2"], "z-20")}>
+                  <div className={cn(s["transform-container"], { [s.active]: position === "left" })}>
+                    <Img
+                      src="/img/nutrifusion.png"
                       alt="Munch Owra"
                       className="w-full h-full object-contain rotate-6"
                       height={1000}
@@ -112,30 +121,19 @@ export function Home() {
                     />
                   </div>
                 </div>
-                <div className={cn(s["munch-owra"], s["munch-owra-2"])}>
-                  <div className={cn(s["transform-container"], { [s.right]: position === "right" })}>
-                    <Img
-                      src="/img/nutrifusion.png"
-                      alt="Munch Owra"
-                      className="w-full h-full object-contain -rotate-12"
-                      height={1000}
-                      width={1000}
-                    />
-                  </div>
-                </div>
-                <div className={cn(s["munch-owra"], s["munch-owra-3"])}>
-                  <div className={cn(s["transform-container"], { [s.right]: position === "right" })}>
+                <div className={cn(s["munch-owra"], s["munch-owra-3"], "z-30")}>
+                  <div className={cn(s["transform-container"], { [s.active]: position === "left" })}>
                     <Img
                       src="/img/chocoshell.png"
                       alt="Munch Owra"
-                      className="w-full h-full object-contain -rotate-12"
+                      className="w-full h-full object-contain rotate-[16deg]"
                       height={1000}
                       width={1000}
                     />
                   </div>
                 </div>
-                <div className={cn(s["munch-owra"], s["munch-owra-4"])}>
-                  <div className={cn(s["transform-container"], { [s.right]: position === "right" })}>
+                <div className={cn(s["munch-owra"], s["munch-owra-4"], "z-40")}>
+                  <div className={cn(s["transform-container"], { [s.active]: position === "left" })}>
                     <Img
                       src="/img/royalcrisp.png"
                       alt="Munch Owra"
@@ -148,56 +146,11 @@ export function Home() {
               </div>
             </div>
             <div
-              className={cn(s["munch-container"], "transition-opacity", "duration-500", {
-                "opacity-0": position === "right",
+              className={cn(s["munch-container"], {
+                [s.active]: position === "left",
               })}
             >
-              <div className={cn(s["munch"], s["m-1"])}>
-                <Img
-                  src="/img/m-1.png"
-                  alt="Chill Owra"
-                  className="w-full h-full object-contain"
-                  height={200}
-                  width={200}
-                />
-              </div>
-              <div className={cn(s["munch"], s["m-2"])}>
-                <Img
-                  src="/img/m-2.png"
-                  alt="Chill Owra"
-                  className="w-full h-full object-contain"
-                  height={200}
-                  width={200}
-                />
-              </div>
-              <div className={cn(s["munch"], s["m-3"])}>
-                <Img
-                  src="/img/m-3.png"
-                  alt="Chill Owra"
-                  className="w-full h-full object-contain"
-                  height={200}
-                  width={200}
-                />
-              </div>
-              <div className={cn(s["munch"], s["m-4"])}>
-                <Img
-                  src="/img/m-4.png"
-                  alt="Chill Owra"
-                  className="w-full h-full object-contain"
-                  height={200}
-                  width={200}
-                />
-              </div>
-              <div className={cn(s["munch"], s["m-5"])}>
-                <Img
-                  src="/img/m-5.png"
-                  alt="Chill Owra"
-                  className="w-full h-full object-contain"
-                  height={200}
-                  width={200}
-                />
-              </div>
-              <div className={cn(s["munch"], s["m-6"])}>
+              <div className={cn(s["munch"], s["m-1"], { [s.active]: position === "left" })}>
                 <Img
                   src="/img/m-6.png"
                   alt="Chill Owra"
@@ -206,23 +159,77 @@ export function Home() {
                   width={200}
                 />
               </div>
+              <div className={cn(s["munch"], s["m-2"], { [s.active]: position === "left" })}>
+                <Img
+                  src="/img/m-2.png"
+                  alt="Chill Owra"
+                  className="w-full h-full object-contain"
+                  height={200}
+                  width={200}
+                />
+              </div>
+              <div className={cn(s["munch"], s["m-3"], { [s.active]: position === "left" })}>
+                <Img
+                  src="/img/m-3.png"
+                  alt="Chill Owra"
+                  className="w-full h-full object-contain -rotate-45"
+                  height={200}
+                  width={200}
+                />
+              </div>
+              <div className={cn(s["munch"], s["m-4"], { [s.active]: position === "left" })}>
+                <Img
+                  src="/img/m-4.png"
+                  alt="Chill Owra"
+                  className="w-full h-full object-contain -rotate-90"
+                  height={200}
+                  width={200}
+                />
+              </div>
+              <div className={cn(s["munch"], s["m-5"], { [s.active]: position === "left" })}>
+                <Img
+                  src="/img/m-5.png"
+                  alt="Chill Owra"
+                  className="w-full h-full object-contain"
+                  height={200}
+                  width={200}
+                />
+              </div>
+              <div className={cn(s["munch"], s["m-6"], { [s.active]: position === "left" })}>
+                <Img
+                  src="/img/m-1.png"
+                  alt="Chill Owra"
+                  className="w-full h-full object-contain"
+                  height={200}
+                  width={200}
+                />
+              </div>
+              <div className={cn(s["munch"], s["m-7"], { [s.active]: position === "left" })}>
+                <Img
+                  src="/img/m-7.png"
+                  alt="Chill Owra"
+                  className="w-full h-full object-contain rotate-12"
+                  height={200}
+                  width={200}
+                />
+              </div>
             </div>
             <div
-              className={cn(s["text-container"], "transition-opacity duration-700", {
-                "opacity-0 bd:opacity-50": position === "right",
+              className={cn(s["text-container"], {
+                [s.active]: position === "left" || position === "center",
               })}
             >
-              <div className="text-center text-cedar-wood-finish flex flex-col items-center gap-8 bd:gap-10">
+              <div className="text-center text-cedar-wood-finish flex flex-col items-center gap-6 bt:gap-14 bd:gap-10">
                 <div className={s["logo-container"]}>
                   <IconMunchLogo fill={colors["cedar-wood-finish"]} />
                 </div>
-                <p className="text-2xl bd:text-3xl w-96 leading-normal">
+                <p className="text-xl bt:text-5xl bd:text-3xl leading-tight w-96 bt:w-[600px]">
                   Her gün <span className="font-bold italic">Zinde kalın</span>, <br /> her lokmada{" "}
                   <span className="font-bold italic">Doğal atıştırın.</span>
                 </p>
                 <Link
                   href="https://www.munchowra.com"
-                  className="inline-block bg-cedar-wood-finish text-toasted-marshmallow-fluff px-6 py-2 rounded-xl text-base font-bold hover:bg-cedar-wood-finish hover:text-toasted-marshmallow-fluff transition-colors"
+                  className="inline-block bg-cedar-wood-finish text-toasted-marshmallow-fluff px-6 py-2 bt:px-8 bt:py-3 bd:px-6 bd:py-2 rounded-xl text-sm bt:text-2xl bd:text-lg font-bold hover:bg-cedar-wood-finish hover:text-toasted-marshmallow-fluff transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -234,7 +241,7 @@ export function Home() {
         </div>
         <div
           className={cn(
-            "relative transition-all duration-1000",
+            "relative transition-all duration-500",
             position === "center" && "w-1/2",
             position === "left" && "w-0 bd:w-4/12",
             position === "right" && "w-full bd:w-8/12"
@@ -243,12 +250,12 @@ export function Home() {
           <div className={s.wrapper}>
             <div
               className={cn(s["chill-owra-container"], "transition-opacity duration-500", {
-                "opacity-0": position === "left",
+                "opacity-0": position === "left" || position === "center",
               })}
             >
               <div className={cn(s["items"])}>
                 <div className={cn(s["chill-owra"], s["chill-owra-1"])}>
-                  <div className={cn(s["transform-container"], { [s.right]: position === "right" })}>
+                  <div className={cn(s["transform-container"], { [s.active]: position === "right" })}>
                     <Img
                       src="/img/chill-owra.png"
                       alt="Chill Owra"
@@ -259,7 +266,7 @@ export function Home() {
                   </div>
                 </div>
                 <div className={cn(s["chill-owra"], s["chill-owra-2"])}>
-                  <div className={cn(s["transform-container"], { [s.right]: position === "right" })}>
+                  <div className={cn(s["transform-container"], { [s.active]: position === "right" })}>
                     <Img
                       src="/img/chill-owra.png"
                       alt="Chill Owra"
@@ -272,11 +279,11 @@ export function Home() {
               </div>
             </div>
             <div
-              className={cn(s["ice-container"], "transition-opacity", "duration-500", {
-                "opacity-0": position === "left",
+              className={cn(s["ice-container"], {
+                [s.active]: position === "right",
               })}
             >
-              <div className={cn(s["ice"], s["ice-1"])}>
+              <div className={cn(s["ice"], s["ice-1"], { [s.active]: position === "right" })}>
                 <Img
                   src="/img/ice-1.png"
                   alt="Chill Owra"
@@ -285,7 +292,7 @@ export function Home() {
                   width={200}
                 />
               </div>
-              <div className={cn(s["ice"], s["ice-2"])}>
+              <div className={cn(s["ice"], s["ice-2"], { [s.active]: position === "right" })}>
                 <Img
                   src="/img/ice-2.png"
                   alt="Chill Owra"
@@ -294,7 +301,7 @@ export function Home() {
                   width={200}
                 />
               </div>
-              <div className={cn(s["ice"], s["ice-3"])}>
+              <div className={cn(s["ice"], s["ice-3"], { [s.active]: position === "right" })}>
                 <Img
                   src="/img/ice-3.png"
                   alt="Chill Owra"
@@ -303,7 +310,7 @@ export function Home() {
                   width={200}
                 />
               </div>
-              <div className={cn(s["ice"], s["ice-4"])}>
+              <div className={cn(s["ice"], s["ice-4"], { [s.active]: position === "right" })}>
                 <Img
                   src="/img/ice-4.png"
                   alt="Chill Owra"
@@ -312,7 +319,7 @@ export function Home() {
                   width={200}
                 />
               </div>
-              <div className={cn(s["ice"], s["ice-5"])}>
+              <div className={cn(s["ice"], s["ice-5"], { [s.active]: position === "right" })}>
                 <Img
                   src="/img/ice-5.png"
                   alt="Chill Owra"
@@ -321,7 +328,7 @@ export function Home() {
                   width={200}
                 />
               </div>
-              <div className={cn(s["ice"], s["ice-6"])}>
+              <div className={cn(s["ice"], s["ice-6"], { [s.active]: position === "right" })}>
                 <Img
                   src="/img/ice-6.png"
                   alt="Chill Owra"
@@ -332,21 +339,21 @@ export function Home() {
               </div>
             </div>
             <div
-              className={cn(s["text-container"], "transition-opacity duration-700", {
-                "opacity-0 bd:opacity-50": position === "left",
+              className={cn(s["text-container"], {
+                [s.active]: position === "right" || position === "center",
               })}
             >
-              <div className="text-center text-blue-ruin flex flex-col items-center gap-8 bd:gap-10">
+              <div className="text-center text-blue-ruin flex flex-col items-center gap-6 bt:gap-12 bd:gap-10">
                 <div className={s["logo-container"]}>
                   <IconChillOwraLogo fill={colors["blue-ruin"]} />
                 </div>
-                <p className="text-2xl bd:text-3xl w-96 leading-normal">
+                <p className="text-xl bt:text-5xl bd:text-3xl leading-tight w-96 bt:w-[600px]">
                   Kalite ve eğlencenin <br />
                   <span className="font-bold italic">buluşma noktası!</span>
                 </p>
                 <Link
                   href="https://www.chillowra.com"
-                  className="inline-block bg-blue-ruin text-toasted-marshmallow-fluff px-6 py-2 rounded-xl text-base font-bold hover:bg-blue-ruin hover:text-toasted-marshmallow-fluff transition-colors"
+                  className="inline-block bg-blue-ruin text-toasted-marshmallow-fluff px-6 py-2 bt:px-8 bt:py-3 bd:px-6 bd:py-2 rounded-xl text-sm bt:text-2xl bd:text-lg font-bold hover:bg-blue-ruin hover:text-toasted-marshmallow-fluff transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
