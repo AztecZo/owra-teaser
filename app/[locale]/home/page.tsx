@@ -8,7 +8,6 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { useMouse, useWindowSize } from "react-use"
 
 import { IconChillOwraLogo, IconMunchLogo, IconOwraLogo } from "@/components/icons"
-import { LetterSwapForward } from "@/components/letter-swap-forward"
 import { Img } from "@/components/utility/img"
 
 import { breakpoints, colors } from "@/styles/config.mjs"
@@ -237,7 +236,7 @@ export function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LetterSwapForward label="Ürünleri İnceleyin" reverse={false} />
+                  Ürünleri İnceleyin
                 </Link>
               </div>
             </div>
@@ -362,7 +361,7 @@ export function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LetterSwapForward label="Ürünleri İnceleyin" reverse={false} />
+                  Ürünleri İnceleyin
                 </Link>
               </div>
             </div>
