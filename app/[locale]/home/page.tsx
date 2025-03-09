@@ -18,14 +18,16 @@ export function Home() {
   const { docX } = useMouse(ref)
   const { width: windowWidth } = useWindowSize()
   const isMobile = windowWidth < breakpoints.breakpointTablet
+  const [mobileSet, setMobileSet] = useState(false)
 
-  const [position, setPosition] = useState<"left" | "right" | "center">("left")
+  const [position, setPosition] = useState<"left" | "right" | "center">("center")
 
   useLayoutEffect(() => {
-    if (isMobile) {
+    if (isMobile && !mobileSet) {
       setPosition("left")
+      setMobileSet(true)
     }
-  }, [])
+  }, [isMobile, mobileSet])
 
   useEffect(() => {
     if (isMobile) {
@@ -229,7 +231,7 @@ export function Home() {
                 </p>
                 <Link
                   href="https://www.munchowra.com"
-                  className="inline-block bg-cedar-wood-finish text-toasted-marshmallow-fluff px-6 py-2 bt:px-8 bt:py-3 bd:px-6 bd:py-2 rounded-xl text-sm bt:text-2xl bd:text-lg font-bold hover:bg-cedar-wood-finish hover:text-toasted-marshmallow-fluff transition-colors"
+                  className="inline-block border-2 border-cedar-wood-finish bg-cedar-wood-finish text-toasted-marshmallow-fluff px-6 py-2 bt:px-8 bt:py-3 bd:px-6 bd:py-2 rounded-lg xl:rounded-xl text-sm bt:text-2xl bd:text-lg font-bold hover:bg-toasted-marshmallow-fluff hover:text-cedar-wood-finish transition-colors cursor-pointer"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -296,7 +298,7 @@ export function Home() {
                 <Img
                   src="/img/ice-2.png"
                   alt="Chill Owra"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rotate-90"
                   height={200}
                   width={200}
                 />
@@ -314,7 +316,7 @@ export function Home() {
                 <Img
                   src="/img/ice-4.png"
                   alt="Chill Owra"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rotate-45"
                   height={200}
                   width={200}
                 />
@@ -323,7 +325,7 @@ export function Home() {
                 <Img
                   src="/img/ice-5.png"
                   alt="Chill Owra"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rotate-90"
                   height={200}
                   width={200}
                 />
@@ -332,7 +334,7 @@ export function Home() {
                 <Img
                   src="/img/ice-6.png"
                   alt="Chill Owra"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rotate-90"
                   height={200}
                   width={200}
                 />
@@ -353,7 +355,7 @@ export function Home() {
                 </p>
                 <Link
                   href="https://www.chillowra.com"
-                  className="inline-block bg-blue-ruin text-toasted-marshmallow-fluff px-6 py-2 bt:px-8 bt:py-3 bd:px-6 bd:py-2 rounded-xl text-sm bt:text-2xl bd:text-lg font-bold hover:bg-blue-ruin hover:text-toasted-marshmallow-fluff transition-colors"
+                  className="inline-block border-2 border-blue-ruin bg-blue-ruin text-toasted-marshmallow-fluff px-6 py-2 bt:px-8 bt:py-3 bd:px-6 bd:py-2 rounded-lg xl:rounded-xl text-sm bt:text-2xl bd:text-lg font-bold hover:bg-toasted-marshmallow-fluff hover:text-blue-ruin transition-colors cursor-pointer"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

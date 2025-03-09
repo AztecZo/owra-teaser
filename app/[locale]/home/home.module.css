@@ -24,58 +24,66 @@
       }
 
       .transform-container {
-        transform: translateX(desktop-vw(-100px));
+        transform: translateX(mobile-vw(-50px)) translateY(mobile-vw(20px));
+
+        @include-media ("desktop") {
+          transform: translateX(desktop-vw(-50px)) translateY(desktop-vw(20px));
+        }
 
         &.active {
-          transform: translateX(desktop-vw(100px));
+          transform: translateX(mobile-vw(0px)) translateY(mobile-vw(0px));
+
+          @include-media ("desktop") {
+            transform: translateX(desktop-vw(0px)) translateY(desktop-vw(0px));
+          }
         }
       }
 
       &.munch-owra-1 {
-        transform: translateY(mobile-vw(240px)) translateX(mobile-vw(-50px));
+        transform: translateY(mobile-vw(220px)) translateX(mobile-vw(-30px));
 
         @include-media ("desktop") {
-          transform: translateY(desktop-vw(450px)) translateX(desktop-vw(-150px));
+          transform: translateY(desktop-vw(450px)) translateX(desktop-vw(-50px));
         }
 
         .transform-container {
-          transition: transform 400ms ease;
+          transition: transform 700ms ease;
         }
       }
 
       &.munch-owra-2 {
-        transform: translateY(mobile-vw(300px)) translateX(mobile-vw(-100px)) scale(1.1);
+        transform: translateY(mobile-vw(280px)) translateX(mobile-vw(-80px)) scale(1.1);
 
         @include-media ("desktop") {
-          transform: translateY(desktop-vw(550px)) translateX(desktop-vw(-300px)) scale(1.1);
+          transform: translateY(desktop-vw(570px)) translateX(desktop-vw(-200px)) scale(1.1);
         }
 
         .transform-container {
-          transition: transform 425ms ease;
+          transition: transform 650ms ease;
         }
       }
 
       &.munch-owra-3 {
-        transform: translateY(mobile-vw(150px)) translateX(mobile-vw(100px)) scale(1.2);
+        transform: translateY(mobile-vw(130px)) translateX(mobile-vw(150px)) scale(1.2);
 
         @include-media ("desktop") {
-          transform: translateY(desktop-vw(250px)) translateX(desktop-vw(100px)) scale(1.2);
+          transform: translateY(desktop-vw(270px)) translateX(desktop-vw(230px)) scale(1.2);
         }
 
         .transform-container {
-          transition: transform 450ms ease;
+          transition: transform 600ms ease;
         }
       }
 
       &.munch-owra-4 {
-        transform: translateY(desktop-vw(700px)) translateX(desktop-vw(-600px)) scale(1.3);
+        transform: translateY(mobile-vw(180px)) translateX(mobile-vw(-100px)) scale(1.3);
 
         @include-media ("desktop") {
-          transform: translateY(desktop-vw(350px)) translateX(desktop-vw(-250px)) scale(1.3);
+          transform: translateY(desktop-vw(350px)) translateX(desktop-vw(-100px)) scale(1.3);
         }
 
         .transform-container {
-          transition: transform 500ms ease;
+          transition: transform 550ms ease;
         }
       }
     }
@@ -169,7 +177,7 @@
       @include-media ("desktop") {
         --size: desktop-vw(60px);
         bottom: desktop-vw(200px);
-        left: desktop-vw(150px);
+        left: desktop-vw(70px);
       }
 
       &.active {
@@ -297,33 +305,54 @@
     grid-template-columns: 1fr 1fr;
 
     .chill-owra {
-      height: mobile-vw(280px);
-      width: mobile-vw(200px);
+      height: mobile-vw(330px);
+      width: mobile-vw(230px);
 
       @include-media ("desktop") {
         height: desktop-vw(560px);
         width: desktop-vw(400px);
       }
 
-      /* .transform-container {
-        transition: transform 700ms ease;
-        transform: translateX(desktop-vw(50px)) translateY(desktop-vw(50px));
+      .transform-container {
+        transform: translateX(mobile-vw(50px)) translateY(mobile-vw(50px));
+
+        @include-media ("desktop") {
+          transform: translateY(desktop-vw(50px)) translateX(desktop-vw(50px));
+        }
 
         &.active {
-          transform: translateX(desktop-vw(-50px)) translateY(desktop-vw(-50px));
+          transform: translateX(mobile-vw(0px)) translateY(mobile-vw(0px));
+
+          @include-media ("desktop") {
+            transform: translateX(desktop-vw(0px)) translateY(desktop-vw(0px));
+          }
         }
-      } */
+      }
 
       &.chill-owra-1 {
-        transition: transform 700ms ease;
-        transform: translateY(desktop-vw(360px)) translateX(desktop-vw(210px));
+        transform: translateY(mobile-vw(230px)) translateX(mobile-vw(100px));
         z-index: 10;
+
+        @include-media ("desktop") {
+          transform: translateY(desktop-vw(370px)) translateX(desktop-vw(180px));
+        }
+
+        .transform-container {
+          transition: transform 600ms ease;
+        }
       }
 
       &.chill-owra-2 {
-        transition: transform 100ms ease;
-        transform: translateY(desktop-vw(190px)) translateX(desktop-vw(90px));
+        transform: translateY(mobile-vw(110px)) translateX(mobile-vw(50px));
         z-index: 5;
+
+        @include-media ("desktop") {
+          transform: translateY(desktop-vw(180px)) translateX(desktop-vw(100px));
+        }
+
+        .transform-container {
+          transition: transform 700ms ease;
+        }
       }
     }
   }
@@ -352,66 +381,67 @@
     z-index: 100;
 
     &.ice-1 {
-      bottom: mobile-vw(17px);
-      right: mobile-vw(17px);
+      --size: mobile-vw(70px);
+      bottom: mobile-vw(150px);
+      right: mobile-vw(-70px);
 
-      height: mobile-vw(70px);
-      width: mobile-vw(70px);
+      height: var(--size);
+      width: var(--size);
 
       @include-media ("desktop") {
-        bottom: desktop-vw(500px);
-        right: desktop-vw(-50px);
+        --size: desktop-vw(140px);
 
-        height: desktop-vw(210px);
-        width: desktop-vw(210px);
+        bottom: desktop-vw(400px);
+        right: desktop-vw(-150px);
       }
 
       &.active {
         transform: translateX(mobile-vw(-50px)) translateY(mobile-vw(-100px)) rotate(15deg);
 
         @include-media ("desktop") {
-          transform: translateX(desktop-vw(-50px)) translateY(desktop-vw(-100px)) rotate(15deg);
+          transform: translateX(desktop-vw(-100px)) translateY(desktop-vw(-100px)) rotate(15deg);
         }
       }
     }
 
     &.ice-2 {
-      bottom: mobile-vw(40px);
+      --size: mobile-vw(50px);
+      bottom: mobile-vw(130px);
       right: mobile-vw(50px);
 
-      height: mobile-vw(50px);
-      width: mobile-vw(50px);
+      height: var(--size);
+      width: var(--size);
 
       @include-media ("desktop") {
-        bottom: desktop-vw(350px);
-        right: desktop-vw(-50px);
+        --size: desktop-vw(70px);
 
-        height: desktop-vw(140px);
-        width: desktop-vw(140px);
+        bottom: desktop-vw(320px);
+        right: desktop-vw(-30px);
       }
 
       &.active {
         transform: translateX(mobile-vw(-50px)) translateY(mobile-vw(-80px)) rotate(-10deg);
 
         @include-media ("desktop") {
-          transform: translateX(desktop-vw(-50px)) translateY(desktop-vw(-80px)) rotate(-10deg);
+          transform: translateX(desktop-vw(-150px)) translateY(desktop-vw(-150px)) rotate(-10deg);
         }
       }
     }
 
     &.ice-3 {
-      bottom: mobile-vw(60px);
-      right: mobile-vw(83px);
+      --size: mobile-vw(80px);
 
-      height: mobile-vw(40px);
-      width: mobile-vw(40px);
+      bottom: mobile-vw(90px);
+      right: mobile-vw(120px);
+
+      height: var(--size);
+      width: var(--size);
 
       @include-media ("desktop") {
-        bottom: desktop-vw(300px);
-        right: desktop-vw(150px);
+        --size: desktop-vw(100px);
 
-        height: desktop-vw(120px);
-        width: desktop-vw(120px);
+        bottom: desktop-vw(200px);
+        right: desktop-vw(110px);
       }
 
       &.active {
@@ -424,73 +454,78 @@
     }
 
     &.ice-4 {
-      bottom: mobile-vw(50px);
-      right: mobile-vw(50px);
+      --size: mobile-vw(90px);
 
-      height: mobile-vw(30px);
-      width: mobile-vw(30px);
+      filter: blur(1px);
+
+      bottom: mobile-vw(-50px);
+      right: mobile-vw(60px);
+
+      height: var(--size);
+      width: var(--size);
 
       @include-media ("desktop") {
-        bottom: desktop-vw(150px);
-        right: desktop-vw(250px);
+        --size: desktop-vw(180px);
 
-        height: desktop-vw(90px);
-        width: desktop-vw(90px);
+        bottom: desktop-vw(-200px);
+        right: desktop-vw(70px);
       }
 
       &.active {
         transform: translateX(mobile-vw(-100px)) translateY(mobile-vw(-50px)) rotate(-15deg);
 
         @include-media ("desktop") {
-          transform: translateX(desktop-vw(-100px)) translateY(desktop-vw(-50px)) rotate(-15deg);
+          transform: translateX(desktop-vw(-100px)) translateY(desktop-vw(-100px)) rotate(15deg);
         }
       }
     }
 
     &.ice-5 {
+      --size: mobile-vw(50px);
+
       bottom: mobile-vw(73px);
       right: mobile-vw(83px);
 
-      height: mobile-vw(40px);
-      width: mobile-vw(40px);
+      height: var(--size);
+      width: var(--size);
 
       @include-media ("desktop") {
-        bottom: desktop-vw(120px);
-        right: desktop-vw(450px);
+        --size: desktop-vw(50px);
 
-        height: desktop-vw(120px);
-        width: desktop-vw(120px);
+        bottom: desktop-vw(80px);
+        right: desktop-vw(350px);
       }
 
       &.active {
         transform: translateX(mobile-vw(-120px)) translateY(mobile-vw(-50px)) rotate(12deg);
 
         @include-media ("desktop") {
-          transform: translateX(desktop-vw(-120px)) translateY(desktop-vw(-50px)) rotate(12deg);
+          transform: translateX(desktop-vw(-120px)) translateY(desktop-vw(-120px)) rotate(12deg);
         }
       }
     }
 
     &.ice-6 {
-      bottom: mobile-vw(33px);
-      right: mobile-vw(117px);
+      --size: mobile-vw(70px);
 
-      height: mobile-vw(30px);
-      width: mobile-vw(30px);
+      bottom: mobile-vw(80px);
+      right: mobile-vw(250px);
+
+      height: var(--size);
+      width: var(--size);
 
       @include-media ("desktop") {
+        --size: desktop-vw(90px);
+
         bottom: desktop-vw(30px);
         right: desktop-vw(550px);
-
-        height: desktop-vw(80px);
-        width: desktop-vw(80px);
       }
 
       &.active {
-        transform: translateX(mobile-vw(-80px)) translateY(mobile-vw(-30px)) rotate(-18deg);
+        transform: translateX(mobile-vw(-80px)) translateY(mobile-vw(-30px)) rotate(18deg);
 
         @include-media ("desktop") {
-          transform: translateX(desktop-vw(-80px)) translateY(desktop-vw(-30px)) rotate(-18deg);
+          transform: translateX(desktop-vw(-80px)) translateY(desktop-vw(-30px)) rotate(18deg);
         }
       }
     }
@@ -501,19 +536,22 @@
   left: 50%;
   position: absolute;
   top: mobile-vw(90px);
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0.9);
   z-index: 200;
 
   opacity: 0;
-  transition: opacity 200ms ease;
-  transition-delay: 200ms;
+  transition: all 300ms ease;
+  transition-delay: 0ms;
 
   &.active {
     opacity: 1;
+    transform: translateX(-50%) scale(1);
+    transition: all 400ms ease;
+    transition-delay: 200ms;
   }
 
   @include-media ("desktop") {
-    opacity: 0.5;
+    opacity: 0.3;
     transition-delay: 0ms;
     top: desktop-vw(100px);
   }
@@ -608,7 +646,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    transition: 900ms all ease;
+    transition: 500ms all ease;
     width: calc((var(--width) / 2 - 2px));
   }
 }
