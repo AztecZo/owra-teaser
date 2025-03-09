@@ -18,20 +18,21 @@ export function Home() {
   const { docX } = useMouse(ref)
   const { width: windowWidth } = useWindowSize()
   const isMobile = windowWidth < breakpoints.breakpointTablet
-  const [mobileSet, setMobileSet] = useState(false)
-  const [hasMouseEntered, setHasMouseEntered] = useState(false)
+  const [isMobileSet, setIsMobileSet] = useState(false)
 
   const [position, setPosition] = useState<"left" | "right" | "center">("center")
 
   useLayoutEffect(() => {
-    if (isMobile && !mobileSet) {
+    if (isMobile && !isMobileSet) {
+      setIsMobileSet(true)
       setPosition("left")
-      setMobileSet(true)
     }
-  }, [isMobile, mobileSet])
+  }, [isMobile, isMobileSet])
 
   useEffect(() => {
-    if (isMobile || !hasMouseEntered) {
+    if (docX === 0) return
+
+    if (isMobile) {
       return
     }
 
@@ -41,23 +42,18 @@ export function Home() {
     const center = docX > oneSixth * 5 && docX < oneSixth * 7
 
     if (left) {
-      if (position !== "left") setPosition("left")
+      setPosition("left")
     } else if (right) {
-      if (position !== "right") setPosition("right")
+      setPosition("right")
     } else if (center) {
-      if (position !== "center") setPosition("center")
+      setPosition("center")
     }
-  }, [docX, position, windowWidth, isMobile, hasMouseEntered])
-
-  const handleMouseEnter = () => {
-    setHasMouseEntered(true)
-  }
+  }, [docX, position, windowWidth, isMobile])
 
   return (
     <div
       className="relative w-screen h-[var(--svh-calc)] flex flex-col items-stretch font-asap bg-toasted-marshmallow-fluff overflow-hidden"
       ref={ref}
-      onMouseEnter={handleMouseEnter}
     >
       <header className="h-16 flex items-center justify-center py-4 border-b border-glazed-sugar">
         <IconOwraLogo fill={colors["algerian-colar"]} />
