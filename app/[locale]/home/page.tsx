@@ -97,7 +97,8 @@ export function Home() {
           <div className={s.wrapper}>
             <div
               className={cn(s["munch-owra-container"], "transition-opacity duration-500", {
-                "opacity-0": position === "right" || position === "center",
+                "opacity-0": position === "right",
+                "opacity-50": position === "center",
               })}
             >
               <div className={cn(s["items"])}>
@@ -252,7 +253,8 @@ export function Home() {
           <div className={s.wrapper}>
             <div
               className={cn(s["chill-owra-container"], "transition-opacity duration-500", {
-                "opacity-0": position === "left" || position === "center",
+                "opacity-0": position === "left",
+                "opacity-50": position === "center",
               })}
             >
               <div className={cn(s["items"])}>
