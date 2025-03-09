@@ -24,6 +24,8 @@ export function Home() {
 
   useLayoutEffect(() => {
     if (isMobile && !mobileSet) {
+      console.log("isMobile", isMobile)
+
       setPosition("left")
       setMobileSet(true)
     }
@@ -35,7 +37,6 @@ export function Home() {
     }
 
     const oneSixth = windowWidth / 12
-
     const left = docX < oneSixth * 5
     const right = docX > oneSixth * 7
     const center = docX > oneSixth * 5 && docX < oneSixth * 7
@@ -88,7 +89,7 @@ export function Home() {
         </div>
         <div
           className={cn(
-            "relative flex items-center justify-center transition-all duration-500",
+            "relative transition-all duration-500",
             position === "center" && "w-1/2",
             position === "left" && "w-full bd:w-8/12",
             position === "right" && "w-0 bd:w-4/12"
