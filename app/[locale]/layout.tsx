@@ -1,14 +1,15 @@
 import "@/styles/globals.css"
 
+import { Locale } from "@/i18n/routing"
 import { StyleVariables } from "@/lib/style-variables"
 import { colors, themes } from "@/styles/config.mjs"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations } from "next-intl/server"
 import { Asap } from "next/font/google"
 
+import Preloader from "@/components/preloader"
 import { RealViewport } from "@/components/real-viewport"
 
-import { Locale } from "@/i18n/routing"
 const asap = Asap({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
@@ -51,6 +52,7 @@ export default async function LocaleLayout({
       <body className={`${asap.variable} antialiased`}>
         <RealViewport />
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <Preloader />
       </body>
     </html>
   )
