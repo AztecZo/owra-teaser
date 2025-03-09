@@ -3,22 +3,24 @@ import "@/styles/globals.css"
 import { StyleVariables } from "@/lib/style-variables"
 import { colors, themes } from "@/styles/config.mjs"
 import { NextIntlClientProvider } from "next-intl"
-import { getMessages } from "next-intl/server"
+import { getMessages, getTranslations } from "next-intl/server"
 import { Asap } from "next/font/google"
 
-import { GSAP } from "@/components/gsap"
 import { RealViewport } from "@/components/real-viewport"
 
+import { Locale } from "@/i18n/routing"
 const asap = Asap({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-asap",
 })
 
-export async function generateMetadata() {
+export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
+  const t = await getTranslations({ locale, namespace: "metadata.default" })
+
   return {
-    title: "Owra",
-    description: "Kalite ve eğlencenin buluşma noktası!",
+    title: t("title"),
+    description: t("description"),
     icons: {
       icon: [
         { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -49,7 +51,6 @@ export default async function LocaleLayout({
       <body className={`${asap.variable} antialiased`}>
         <RealViewport />
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-        <GSAP scrollTrigger={true} />
       </body>
     </html>
   )
