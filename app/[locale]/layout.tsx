@@ -1,10 +1,9 @@
 import "@/styles/globals.css"
 
-import { Locale } from "@/i18n/routing"
 import { StyleVariables } from "@/lib/style-variables"
 import { colors, themes } from "@/styles/config.mjs"
 import { NextIntlClientProvider } from "next-intl"
-import { getMessages, getTranslations } from "next-intl/server"
+import { getMessages } from "next-intl/server"
 import { Asap } from "next/font/google"
 
 import { GSAP } from "@/components/gsap"
@@ -16,12 +15,10 @@ const asap = Asap({
   variable: "--font-asap",
 })
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
-  const t = await getTranslations({ locale, namespace: "metadata.default" })
-
+export async function generateMetadata() {
   return {
-    title: t("title"),
-    description: t("description"),
+    title: "Owra",
+    description: "Kalite ve eğlencenin buluşma noktası!",
     icons: {
       icon: [
         { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
