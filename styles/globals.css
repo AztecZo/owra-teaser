@@ -31,6 +31,7 @@
 
 * {
   scrollbar-width: thin;
+  cursor: default;
 }
 
 /* Core styles that shouldn't be reset */
