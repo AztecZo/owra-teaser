@@ -6,6 +6,7 @@ import { colors, themes } from "@/styles/config.mjs"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations } from "next-intl/server"
 import { Asap } from "next/font/google"
+import { Analytics } from "@vercel/analytics/react"
 
 import Preloader from "@/components/preloader"
 import { RealViewport } from "@/components/real-viewport"
@@ -53,6 +54,7 @@ export default async function LocaleLayout({
         <RealViewport />
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         <Preloader />
+        <Analytics />
       </body>
     </html>
   )
